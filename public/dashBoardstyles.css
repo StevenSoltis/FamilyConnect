@@ -7,6 +7,42 @@ body {
     padding: 0;
   }
 
+  .banner {
+    background-color: #6D597A;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+ 
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px; /* Add some space between the links */
+  }
+  
+  .links a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .center {
+    text-align: center;
+  }
+
 .calendar {
     font-family: Arial, sans-serif;
     width: 900px;
@@ -15,7 +51,7 @@ body {
     border: 1px solid #000000;
     padding: 10px;
     background-color: rgba(53, 80, 112, 0.8); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   }
   
   .header {
@@ -43,11 +79,13 @@ body {
 
   .date {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     height: 70px; 
     border: 1px solid #ccc; 
-    cursor: 
+    cursor: pointer;
+    padding: 5px;
+    color: #ccc;
   }
 
   #dates {
@@ -55,3 +93,7 @@ body {
     grid-template-columns: repeat(7, 1fr); 
     gap: 10px; 
   }
+
+  .month {
+    color: #ccc; 
+}
