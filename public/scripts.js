@@ -173,3 +173,66 @@ alert('An error occurred while updating the list.');
     // Initial creation of one to-do list container
     createTodoListContainer();
 });
+
+//calendar functions 
+document.addEventListener('DOMContentLoaded', () => {
+    const currentMonthElement = document.getElementById('currentMonth');
+    const datesContainer = document.getElementById('dates');
+    const prevMonthButton = document.getElementById('prevMonth');
+    const nextMonthButton = document.getElementById('nextMonth');
+  
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+  
+    function displayCalendar() {
+      currentMonthElement.textContent = new Date(currentYear, currentMonth).toLocaleString('default', {
+        month: 'long',
+        year: 'numeric',
+      });
+  
+      datesContainer.innerHTML = '';
+  
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+      const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+  
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.textContent = '';
+        datesContainer.appendChild(emptyDay);
+      }
+      
+      for (let i = 1; i <= lastDate; i++) {
+        const dateElement = document.createElement('div');
+        dateElement.textContent = i;
+        dateElement.classList.add('date'); // Add the 'date' class
+        dateElement.addEventListener('click', () => {
+          const event = prompt('Enter event for this day:');
+          if (event) {
+            dateElement.textContent = `${i} - ${event}`;
+          }
+        });
+        datesContainer.appendChild(dateElement);
+      }
+    }
+  
+    prevMonthButton.addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentYear--;
+        currentMonth = 11;
+      }
+      displayCalendar();
+    });
+  
+    nextMonthButton.addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentYear++;
+        currentMonth = 0;
+      }
+      displayCalendar();
+    });
+  
+    displayCalendar();
+});

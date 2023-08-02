@@ -1,0 +1,57 @@
+body {
+    background-image: url('mountains.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+  }
+
+.calendar {
+    font-family: Arial, sans-serif;
+    width: 900px;
+    height: 600px;
+    margin: 0 auto;
+    border: 1px solid #000000;
+    padding: 10px;
+    background-color: rgba(53, 80, 112, 0.8); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  .day {
+    padding: 5px;
+  }
+  
+  .dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+  }
+
+  .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px; 
+    border: 1px solid #ccc; 
+    cursor: 
+  }
+
+  #dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 10px; 
+  }

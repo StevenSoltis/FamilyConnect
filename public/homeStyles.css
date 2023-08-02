@@ -1,30 +1,56 @@
 body {
-    font-family: Arial, sans-serif;
-}
+    background-image: url('mountains.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+  }
 
-.container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form {
+  .container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+
+  h1 {
+    margin-bottom: 30px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #000000;
+    padding: 20px;
+    background-color: rgba(53, 80, 112, 0.8); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+    width: 300px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  button {
+    background-color: #E56B6F;
+    color: white;
+    padding: 10px 20px;
+    border: none;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #b56576;
+  }

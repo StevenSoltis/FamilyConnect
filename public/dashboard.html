@@ -9,13 +9,29 @@
 
 </head>
 <body>
-    <div class="left-container">
+    <div class="container">
         <h1>My Calendar</h1>
         <div class="calendar">
-            <!-- Add your calendar here -->
+            <div class="calendar">
+                <div class="header">
+                  <button id="prevMonth">Prev</button>
+                  <h2 id="currentMonth"></h2>
+                  <button id="nextMonth">Next</button>
+                </div>
+                <div class="days">
+                  <div class="day">Sun</div>
+                  <div class="day">Mon</div>
+                  <div class="day">Tue</div>
+                  <div class="day">Wed</div>
+                  <div class="day">Thu</div>
+                  <div class="day">Fri</div>
+                  <div class="day">Sat</div>
+                </div>
+                <div class="dates" id="dates"></div>
+              </div>
         </div>
     </div>
-    <div class="right-container">
+    <div class="banner">
         <h1>Links</h1>
         <div class="links">
             <a href="/todo.html">To-Do Lists</a>
@@ -23,5 +39,6 @@
             <a href="/shared.html">Shared Docs</a>
         </div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
