@@ -35,3 +35,141 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const todoListContainer = document.getElementById('todo-list-container');
+    const addListButton = document.getElementById('add-list');
+
+    let listCounter = 1; // add another list 
+
+
+ // Function to create a new to-do list container
+ function createTodoListContainer(listName, items) {
+    const listContainer = document.createElement('div');
+    listContainer.classList.add('list-container');
+    listContainer.dataset.listId = listCounter;
+
+    const listNameInput = document.createElement('input');
+    listNameInput.type = 'text';
+    listNameInput.value = listName; 
+    listNameInput.placeholder = 'First List';
+    listContainer.appendChild(listNameInput);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete List';
+    deleteButton.classList.add('delete-button');
+    deleteButton.addEventListener('click', () => {
+        onDeleteButtonClick(listContainer);
+    });
+    listContainer.appendChild(deleteButton);
+
+    const updateButton = document.createElement('button');
+    updateButton.textContent = 'Update';
+    updateButton.addEventListener('click', () => {
+    onUpdateButtonClick(listContainer);
+    });
+    listContainer.appendChild(updateButton);
+   
+    const addItemButton = document.createElement('button');
+    addItemButton.textContent = 'Add Item';
+    addItemButton.addEventListener('click', () => {
+        const itemContainer = document.createElement('div');
+        itemContainer.classList.add('item-container');
+
+        const itemInput = document.createElement('input');
+        itemInput.type = 'text';
+        itemInput.placeholder = 'Enter item name';
+        itemContainer.appendChild(itemInput);
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox-${listCounter}`;
+        itemContainer.appendChild(checkbox);
+
+        const label = document.createElement('label');
+        label.textContent = 'Completed';
+        label.htmlFor = `checkbox-${listCounter}`;
+        itemContainer.appendChild(label);
+
+        listContainer.appendChild(itemContainer);
+    });
+    listContainer.appendChild(addItemButton);
+
+    todoListContainer.appendChild(listContainer);
+    listCounter++;
+}
+
+// new list button
+addListButton.addEventListener('click', () => {
+    const listName = 'Enter list name'; 
+    const items = [];
+    createTodoListContainer(listName, items); 
+});
+
+    // Function to check if all items in a list are checked
+    function areAllItemsChecked(listContainer) {
+        const checkboxes = listContainer.querySelectorAll('.item-container input[type="checkbox"]');
+        for (const checkbox of checkboxes) {
+            if (!checkbox.checked) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function onUpdateButtonClick(listContainer) {
+      const listNameInput = listContainer.querySelector('input[type="text"]');
+      const listName = listNameInput.value.trim();
+
+      const itemContainers = listContainer.querySelectorAll('.item-container');
+      const items = [];
+      for (const itemContainer of itemContainers) {
+           const itemInput = itemContainer.querySelector('input[type="text"]');
+           const itemName = itemInput.value.trim();
+           const checkbox = itemContainer.querySelector('input[type="checkbox"]');
+           const completed = checkbox.checked;
+
+           items.push({
+           item_name: itemName,
+           completed: completed,
+    });
+    
+    fetch('/update-list', {
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            listName: listName,
+            items: items,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+// response from the server if needed
+ })
+ .catch(error => {
+console.error('Error:', error);
+alert('An error occurred while updating the list.');
+});
+}
+}
+
+    // Function to handle the delete button click
+    function onDeleteButtonClick(listContainer) {
+        if (areAllItemsChecked(listContainer)) {
+            listContainer.remove();
+        } else {
+            // Show a message indicating that not all items are checked and cannot delete yet.
+            alert('Please check all items before deleting the list.');
+        }
+    }
+
+    // Add event listener to the "Add New List" button
+    addListButton.addEventListener('click', () => {
+        createTodoListContainer();
+    });
+
+    // Initial creation of one to-do list container
+    createTodoListContainer();
+});

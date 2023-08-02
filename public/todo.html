@@ -5,137 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="todoStyles.css">
-    <style>
-        .banner {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
 
-        .banner a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        .container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .item-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .item-container label {
-            margin-left: 5px;
-        }
-
-        .delete-button {
-            color: red;
-            cursor: pointer;
-            float: right;
-        }
-    </style>
 </head>
 <body>
     <div class="banner">
-        <a href="home.html">Home</a>
-        <a href="/logout">Log Out</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="home.html">Log Out</a>
     </div>
     <h1>To-Do List</h1>
     <div id="todo-list-container">
-        <!-- The to-do list containers will be dynamically added here -->
+        <!-- new containers created here-ish -->
     </div>
     <button id="add-list">Add New List</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const todoListContainer = document.getElementById('todo-list-container');
-            const addListButton = document.getElementById('add-list');
 
-            let listCounter = 1; // Used to generate unique list names
-
-            // Function to create a new to-do list container
-            function createTodoListContainer() {
-                const listContainer = document.createElement('div');
-                listContainer.classList.add('container');
-
-                const listNameInput = document.createElement('input');
-                listNameInput.type = 'text';
-                listNameInput.placeholder = 'Enter list name';
-                listContainer.appendChild(listNameInput);
-
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete List';
-                deleteButton.classList.add('delete-button');
-                deleteButton.addEventListener('click', () => {
-                    onDeleteButtonClick(listContainer);
-                });
-                listContainer.appendChild(deleteButton);
-
-                const addItemButton = document.createElement('button');
-                addItemButton.textContent = 'Add Item';
-                addItemButton.addEventListener('click', () => {
-                    const itemContainer = document.createElement('div');
-                    itemContainer.classList.add('item-container');
-
-                    const itemInput = document.createElement('input');
-                    itemInput.type = 'text';
-                    itemInput.placeholder = 'Enter item name';
-                    itemContainer.appendChild(itemInput);
-
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `checkbox-${listCounter}`;
-                    itemContainer.appendChild(checkbox);
-
-                    const label = document.createElement('label');
-                    label.textContent = 'Completed';
-                    label.htmlFor = `checkbox-${listCounter}`;
-                    itemContainer.appendChild(label);
-
-                    listContainer.appendChild(itemContainer);
-                });
-                listContainer.appendChild(addItemButton);
-
-                todoListContainer.appendChild(listContainer);
-                listCounter++;
-            }
-
-            // Function to check if all items in a list are checked
-            function areAllItemsChecked(listContainer) {
-                const checkboxes = listContainer.querySelectorAll('.item-container input[type="checkbox"]');
-                for (const checkbox of checkboxes) {
-                    if (!checkbox.checked) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            // Function to handle the delete button click
-            function onDeleteButtonClick(listContainer) {
-                if (areAllItemsChecked(listContainer)) {
-                    listContainer.remove();
-                } else {
-                    // Show a message indicating that not all items are checked and cannot delete yet.
-                    alert('Please check all items before deleting the list.');
-                }
-            }
-
-            // Add event listener to the "Add New List" button
-            addListButton.addEventListener('click', () => {
-                createTodoListContainer();
-            });
-
-            // Initial creation of one to-do list container
-            createTodoListContainer();
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

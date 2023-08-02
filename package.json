@@ -1,7 +1,7 @@
 {
-    "name": "family-web-app",
+    "name": "family_connect",
     "version": "1.0.0",
-    "description": "A simple family web app with login functionality",
+    "description": "Household organization webapp",
     "main": "server.js",
     "dependencies": {
         "body-parser": "^1.20.2",
