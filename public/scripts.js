@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
 
-        fetch('http://127.0.0.1:3001/login', { 
+        fetch('http://127.0.0.1:3000/login', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (data.success) {
 
-                window.location.href = '/dashboard';
+                window.location.href = 'dashboard';
             } else {
 
                 alert('Sorry the entered information does not match our records.');

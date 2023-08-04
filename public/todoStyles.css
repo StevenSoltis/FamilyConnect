@@ -1,14 +1,19 @@
 body {
-    font-family: Arial, sans-serif;
-}
-
-.banner {
-    background-color: #333;
+    background-image: url('mountains.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .banner {
+    background-color: #6D597A;
     color: #fff;
     padding: 10px;
     text-align: center;
-}
-
+  }
+  
 .banner a {
     color: #fff;
     text-decoration: none;
